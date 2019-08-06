@@ -2,6 +2,7 @@ package hw2;
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 /**
@@ -17,7 +18,8 @@ public class Hooks {
 
     @BeforeSuite(description = "Prepare driver for test running")
     @Parameters({"testType", "deviceName"})
-    public void setUp(String testType, String deviceName) throws Exception {
+    public void setUp(@Optional("web")String testType, @Optional("emulator-5554") String deviceName) throws Exception {
+        System.out.println(String.format("Passed parameters: testType = %s, deviceName = %s", testType, deviceName));
         switch (testType) {
             case ("web"):
                 TestProperties.instantiate(PropertiesType.WEB_PROPS, deviceName);
