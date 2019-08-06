@@ -1,0 +1,6 @@
+5. Modify existing tests to run on a real device. What should be changed?
+
+  I have changed only device name.
+
+6. I think that tests on a physical device are running slightly longer (!), than on an emulator.
+    Besides when I open ContactManager on my smartphone, I have got several accounts there, so I can check if I can add a new contact. Emulator is fresh and clean, so it does not have any accounts yet, so I have to set at least one account on it before continuing tests.

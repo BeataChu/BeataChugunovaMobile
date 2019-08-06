@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Webtests">
+
+    <parameter name="testType" value="native" />
+    <parameter name="deviceName" value="${deviceName}" />
+
+    <test name="Native">
+
+        <classes>
+
+            <class name="hw2.native_tests.SimpleNativeTests"/>
+        </classes>
+    </test>
+</suite>

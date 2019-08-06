@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Webtests">
+
+    <parameter name="testType" value="web" />
+    <parameter name="deviceName" value="${deviceName}" />
+
+    <test name="Web">
+
+        <classes>
+            <class name="hw2.web_tests.SimpleWebTests"/>
+        </classes>
+    </test>
+</suite>
