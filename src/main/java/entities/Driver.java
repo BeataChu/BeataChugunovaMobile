@@ -144,6 +144,13 @@ public class Driver {
         driver = null;
     }
 
+    public static void closeApp() {
+        if (driver == null) {
+            throw new NullPointerException("Driver has not been instantiated");
+        }
+        driver.driverSingle.closeApp();
+    }
+
     /**
      * return a path to a site under test
      *

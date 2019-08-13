@@ -27,6 +27,7 @@ public class SimpleWebTests extends Hooks {
 
     @AfterSuite(description = "Do not close driver on web tests completion")
     public void tearDown() throws Exception {
+        Driver.closeApp();
         TestProperties.erase();
     }
 }
