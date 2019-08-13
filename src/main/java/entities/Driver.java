@@ -19,7 +19,7 @@ public class Driver {
     private String AUT; //app under testing
     private String SUT; //site under testing
     private String TEST_PLATFORM;
-    private String DRIVER;
+    private String DRIVER_URL;
     private String DEVICE_NAME;
 
     /**
@@ -33,7 +33,9 @@ public class Driver {
         String t_sut = TestProperties.getProperty("sut");
         SUT = t_sut == null ? null : "http://" + t_sut;
         TEST_PLATFORM = TestProperties.getProperty("platform");
-        DRIVER = TestProperties.getProperty("driver");
+        DRIVER_URL = String.format(TestProperties.getProperty("driver_url");
+//        new AndroidDriver(
+//                new URL(format("http://%s:%s@%s/wd/hub", PROJECT_NAME, API_KEY, APPIUM_HUB)), capabilities);
         DEVICE_NAME = TestProperties.getProperty("deviceName");
     }
 
@@ -78,7 +80,7 @@ public class Driver {
         // Init driver for local Appium server with set of capabilities
         try {
             if (driverSingle == null) {
-                driverSingle = new AppiumDriver(new URL(driver.DRIVER), driver.capabilities);
+                driverSingle = new AppiumDriver(new URL(driver.DRIVER_URL), driver.capabilities);
             }
             //Set an object to handle timeouts
             if (waitSingle == null) {
