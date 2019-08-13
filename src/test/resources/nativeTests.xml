@@ -8,7 +8,7 @@
 
         <classes>
 
-            <class name="hw2.native_tests.SimpleNativeTests"/>
+            <class name="native_tests.SimpleNativeTests"/>
         </classes>
     </test>
 </suite>

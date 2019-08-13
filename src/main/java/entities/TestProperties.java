@@ -1,4 +1,4 @@
-package hw2;
+package entities;
 
 import java.io.FileInputStream;
 import java.util.Properties;

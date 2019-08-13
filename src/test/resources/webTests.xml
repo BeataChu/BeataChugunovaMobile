@@ -7,7 +7,7 @@
     <test name="Web">
 
         <classes>
-            <class name="hw2.web_tests.SimpleWebTests"/>
+            <class name="web_tests.SimpleWebTests"/>
         </classes>
     </test>
 </suite>

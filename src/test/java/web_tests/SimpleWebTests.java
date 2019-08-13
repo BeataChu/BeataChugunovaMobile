@@ -1,9 +1,9 @@
-package hw2.web_tests;
+package web_tests;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
-import hw2.Hooks;
-import hw2.Driver;
+import hooks.Hooks;
+import entities.Driver;
 
 /**
  * Set of tests for web application

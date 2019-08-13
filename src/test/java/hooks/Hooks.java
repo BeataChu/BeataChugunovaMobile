@@ -1,5 +1,8 @@
-package hw2;
+package hooks;
 
+import entities.Driver;
+import entities.PropertiesType;
+import entities.TestProperties;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;

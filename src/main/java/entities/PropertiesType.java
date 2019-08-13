@@ -1,11 +1,11 @@
-package hw2;
+package entities;
 
 /**
  * Enum for selecting a suitable properties file
  */
 public enum PropertiesType {
-    NATIVE_PROPS("/src/main/resources/hw2/nativeTest.properties"),
-    WEB_PROPS("/src/main/resources/hw2/webTest.properties");
+    NATIVE_PROPS("/src/main/resources/nativeTest.properties"),
+    WEB_PROPS("/src/main/resources/webTest.properties");
 
     private String filePath;
 
