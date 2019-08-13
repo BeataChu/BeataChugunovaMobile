@@ -8,6 +8,8 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import java.util.Properties;
+
 /**
  * Class of hooks
  */
@@ -20,19 +22,21 @@ public class Hooks {
      */
 
     @BeforeSuite(description = "Prepare driver for test running")
-    @Parameters({"testType", "deviceName"})
-    public void setUp(@Optional("web")String testType, @Optional("emulator-5554") String deviceName) throws Exception {
-        System.out.println(String.format("Passed parameters: testType = %s, deviceName = %s", testType, deviceName));
+    @Parameters({"testType", "platform", "udid"})
+    public void setUp(@Optional("web")String testType, @Optional("iOS") String platform, @Optional("ec645b7fe329a5ee0b53bd3494ad2cd8963ec07a") String udid) throws Exception {
+        System.out.println(String.format("Passed parameters: testType = %s, platform = %s, udid = %s", testType, platform, udid));
+        PropertiesType type;
         switch (testType) {
             case ("web"):
-                TestProperties.instantiate(PropertiesType.WEB_PROPS, deviceName);
+                type = (platform.equals("Android"))? PropertiesType.WEB_ANDROID_PROPS : PropertiesType.WEB_IOS_PROPS;
                 break;
             case ("native"):
-                TestProperties.instantiate(PropertiesType.NATIVE_PROPS, deviceName);
+                type = (platform.equals("Android"))? PropertiesType.NATIVE_ANDROID_PROPS : PropertiesType.NATIVE_IOS_PROPS;
                 break;
             default:
                 throw new IllegalArgumentException("No such test type");
         }
+        TestProperties.instantiate(type, udid);
     }
 
     /**

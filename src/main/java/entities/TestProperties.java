@@ -23,7 +23,7 @@ public class TestProperties {
      * @param type
      * @throws Exception
      */
-    public static void instantiate(PropertiesType type, String deviceName) throws Exception {
+    public static void instantiate(PropertiesType type, String udid) throws Exception {
         if (instanceCounter != 0) {
             throw new InstantiationException("Test properties have already been instantiated");
         }
@@ -31,7 +31,7 @@ public class TestProperties {
         testProperties.type = type;
         FileInputStream in = new FileInputStream((System.getProperty("user.dir") + type.getPath()));
         testProperties.currentProps.load(in);
-        testProperties.currentProps.setProperty("deviceName", deviceName);
+        testProperties.currentProps.setProperty("udid", udid);
         in.close();
         instanceCounter++;
     }

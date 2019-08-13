@@ -11,8 +11,8 @@ import java.net.URL;
 
 public class Driver {
     private static Driver driver = null;
-    private static AppiumDriver driverSingle = null;
-    private static WebDriverWait waitSingle;
+    private AppiumDriver driverSingle = null;
+    private WebDriverWait waitSingle;
     protected DesiredCapabilities capabilities;
 
 
@@ -20,7 +20,8 @@ public class Driver {
     private String SUT; //site under testing
     private String TEST_PLATFORM;
     private String DRIVER_URL;
-    private String DEVICE_NAME;
+    private String UDID;
+    private String AUTOMATION_NAME;
 
     /**
      * Driver constructor
@@ -33,10 +34,9 @@ public class Driver {
         String t_sut = TestProperties.getProperty("sut");
         SUT = t_sut == null ? null : "http://" + t_sut;
         TEST_PLATFORM = TestProperties.getProperty("platform");
-        DRIVER_URL = String.format(TestProperties.getProperty("driver_url");
-//        new AndroidDriver(
-//                new URL(format("http://%s:%s@%s/wd/hub", PROJECT_NAME, API_KEY, APPIUM_HUB)), capabilities);
-        DEVICE_NAME = TestProperties.getProperty("deviceName");
+        DRIVER_URL = TestProperties.getProperty("driver_url");
+        AUTOMATION_NAME = TestProperties.getProperty("automation");
+        UDID = TestProperties.getProperty("udid");
     }
 
     /**
@@ -47,23 +47,25 @@ public class Driver {
     protected static void instantiate() throws Exception {
         driver = new Driver();
         driver.capabilities = new DesiredCapabilities();
-        driver.capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
 
         String browserName;
 
         // Setup test platform: Android or iOS. Browser also depends on a platform.
         switch (driver.TEST_PLATFORM) {
             case "Android":
-                driver.capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, driver.DEVICE_NAME);
+//                driver.capabilities.setCapability(MobileCapabilityType.UDID, driver.UDID);
                 browserName = "Chrome";
                 break;
             case "iOS":
+//                driver.capabilities.setCapability(MobileCapabilityType.UDID, driver.UDID);
                 browserName = "Safari";
                 break;
             default:
                 throw new Exception("Unknown mobile platform");
         }
+        driver.capabilities.setCapability(MobileCapabilityType.UDID, driver.UDID);
         driver.capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, driver.TEST_PLATFORM);
+        driver.capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, driver.AUTOMATION_NAME);
 
         // Setup type of application: mobile, web (or hybrid)
         if (driver.AUT != null && driver.SUT == null) {
@@ -79,12 +81,12 @@ public class Driver {
 
         // Init driver for local Appium server with set of capabilities
         try {
-            if (driverSingle == null) {
-                driverSingle = new AppiumDriver(new URL(driver.DRIVER_URL), driver.capabilities);
+            if (driver.driverSingle == null) {
+                driver.driverSingle = new AppiumDriver(new URL(driver.DRIVER_URL), driver.capabilities);
             }
             //Set an object to handle timeouts
-            if (waitSingle == null) {
-                waitSingle = new WebDriverWait(appiumDriver(), 10);
+            if (driver.waitSingle == null) {
+                driver.waitSingle = new WebDriverWait(appiumDriver(), 10);
             }
         } catch (WebDriverException wde) {
             System.out.println("Try to switch Appium on");
@@ -99,8 +101,8 @@ public class Driver {
      * @throws Exception
      */
     public static AppiumDriver appiumDriver() throws Exception {
-        if (driverSingle == null) instantiate();
-        return driverSingle;
+        if (driver == null) instantiate();
+        return driver.driverSingle;
     }
 
     /**
@@ -110,19 +112,19 @@ public class Driver {
      * @throws Exception
      */
     public static WebDriverWait driverWait() throws Exception {
-        if (waitSingle == null) instantiate();
-        return waitSingle;
+        if (driver == null) instantiate();
+        return driver.waitSingle;
     }
 
     /**
      * Ends life cycle of a driver and it's fields
      */
     public static void quit() {
-        if (driverSingle == null) {
+        if (driver == null) {
             throw new NullPointerException("Driver has not been instantiated");
         }
-        driverSingle.quit();
-        waitSingle = null;
+        driver.driverSingle.quit();
+        driver.waitSingle = null;
         driver = null;
 
     }
@@ -134,7 +136,7 @@ public class Driver {
      * @throws Exception
      */
     public static String getSUT() throws Exception {
-        if (driverSingle == null) instantiate();
+        if (driver == null) instantiate();
         return driver.SUT;
     }
 

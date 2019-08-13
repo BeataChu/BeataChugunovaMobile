@@ -2,7 +2,8 @@
 <suite name="Webtests">
 
     <parameter name="testType" value="web" />
-    <parameter name="deviceName" value="${deviceName}" />
+    <parameter name="platform" value="${platform}" />
+    <parameter name="udid" value="${udid}" />
 
     <test name="Web">
 
