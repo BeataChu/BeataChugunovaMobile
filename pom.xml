@@ -7,7 +7,8 @@
     <groupId>BeataChugunova</groupId>
     <artifactId>MobileTesting</artifactId>
     <version>1.0-SNAPSHOT</version>
-<!--   When running tests, choose profile (nativeTests/webTests) and define "udid" argument (e.g. "emulator-5554" or "321184690294"))  ?-->
+<!--   When running tests, choose profile (nativeTests/webTests), define parameters "platform" (Android/iOS)
+       and "udid")  ?-->
 
     <properties>
         <java.version>1.8</java.version>
