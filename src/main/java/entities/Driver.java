@@ -24,7 +24,6 @@ public class Driver {
     private String AUTOMATION_NAME;
     private String APP_PACKAGE;
     private String APP_ACTIVITY;
-    private String MAIN_PAGE_TITLE;
 
 
     /**
@@ -42,7 +41,6 @@ public class Driver {
         UDID = TestProperties.getProperty("udid");
         APP_PACKAGE = TestProperties.getProperty("appPackage");
         APP_ACTIVITY = TestProperties.getProperty("appActivity");
-        MAIN_PAGE_TITLE = TestProperties.getProperty("mainPageTitle");
     }
 
     /**
