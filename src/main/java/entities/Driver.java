@@ -2,6 +2,7 @@ package entities;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -75,12 +76,17 @@ public class Driver {
         }
 
         // Init driver for local Appium server with set of capabilities
-        if (driverSingle == null) {
-            driverSingle = new AppiumDriver(new URL(driver.DRIVER), driver.capabilities);
-        }
-        //Set an object to handle timeouts
-        if (waitSingle == null) {
-            waitSingle = new WebDriverWait(appiumDriver(), 10);
+        try {
+            if (driverSingle == null) {
+                driverSingle = new AppiumDriver(new URL(driver.DRIVER), driver.capabilities);
+            }
+            //Set an object to handle timeouts
+            if (waitSingle == null) {
+                waitSingle = new WebDriverWait(appiumDriver(), 10);
+            }
+        } catch (WebDriverException wde) {
+            System.out.println("Try to switch Appium on");
+            wde.printStackTrace();
         }
     }
 
@@ -111,7 +117,7 @@ public class Driver {
      */
     public static void quit() {
         if (driverSingle == null) {
-            throw new NullPointerException("driver has not been instantiated");
+            throw new NullPointerException("Driver has not been instantiated");
         }
         driverSingle.quit();
         waitSingle = null;
