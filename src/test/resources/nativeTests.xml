@@ -5,9 +5,12 @@
     <parameter name="deviceName" value="${deviceName}" />
 
     <test name="Native">
-
+        <groups>
+            <run>
+                <include name="native"/>
+            </run>
+        </groups>
         <classes>
-
             <class name="native_tests.SimpleNativeTests"/>
         </classes>
     </test>

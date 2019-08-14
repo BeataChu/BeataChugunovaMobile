@@ -11,6 +11,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * Set of tests for web application
  */
+@Test(groups = { "web"})
 public class SimpleWebTests extends Hooks {
 
     @Test(description = "Open website")

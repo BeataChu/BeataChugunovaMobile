@@ -19,7 +19,7 @@ public class Hooks {
      * @throws Exception
      */
 
-    @BeforeSuite(description = "Prepare driver for test running")
+    @BeforeSuite(description = "Prepare driver for test running", groups = {"web", "native"})
     @Parameters({"testType", "deviceName"})
     public void setUp(@Optional("web")String testType, @Optional("emulator-5554") String deviceName) throws Exception {
         System.out.println(String.format("Passed parameters: testType = %s, deviceName = %s", testType, deviceName));

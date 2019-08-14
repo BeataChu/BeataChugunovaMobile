@@ -5,7 +5,11 @@
     <parameter name="deviceName" value="${deviceName}" />
 
     <test name="Web">
-
+        <groups>
+            <run>
+                <include name="web"/>
+            </run>
+        </groups>
         <classes>
             <class name="web_tests.SimpleWebTests"/>
         </classes>
