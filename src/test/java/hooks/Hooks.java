@@ -19,7 +19,7 @@ public class Hooks {
      * @throws Exception
      */
 
-    @BeforeSuite(description = "Prepare driver for test running")
+    @BeforeSuite(description = "Prepare driver for test running", groups = {"web", "native"})
     @Parameters({"testType", "platform", "udid"})
     public void setUp(@Optional("native") String testType,
                       @Optional("Android") String platform,

@@ -12,7 +12,7 @@ import hooks.Hooks;
  */
 public class SimpleNativeTests extends Hooks {
 
-    @Test(description = "Click the button 'Add contact'")
+    @Test(description = "Click the button 'Add contact'", groups = {"native"})
     public void simplestTest() throws Exception {
         String app_package_name = "com.example.android.contactmanager:id/";
         By add_btn = By.id(app_package_name + "addContactButton");

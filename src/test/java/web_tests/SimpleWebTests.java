@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class SimpleWebTests extends Hooks {
 
-    @Test(description = "Open website")
+    @Test(description = "Open website", groups = {"web"})
     public void webTest() throws Exception {
         String siteName = Driver.getInstance().getSUT();
         Driver.getInstance().appiumDriver().get(siteName);
