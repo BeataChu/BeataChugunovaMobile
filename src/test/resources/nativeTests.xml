@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Webtests">
 
-    <parameter name="testType" value="web" />
+    <parameter name="testType" value="native" />
     <parameter name="platform" value="${platform}" />
     <parameter name="udid" value="${udid}" />
 
