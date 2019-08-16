@@ -41,6 +41,7 @@ public class Driver {
         UDID = TestProperties.getProperty("udid");
         APP_PACKAGE = TestProperties.getProperty("appPackage");
         APP_ACTIVITY = TestProperties.getProperty("appActivity");
+
     }
 
     /**

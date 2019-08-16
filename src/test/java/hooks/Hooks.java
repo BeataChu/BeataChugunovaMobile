@@ -23,7 +23,7 @@ public class Hooks {
     @Parameters({"testType", "platform", "udid"})
     public void setUp(@Optional("native") String testType,
                       @Optional("Android") String platform,
-                      @Optional("802KPFX1550899") String udid)
+                      @Optional("008f8f9d816d114d") String udid)
             throws Exception {
         System.out.println(String.format("Passed parameters: testType = %s, platform = %s, udid = %s",
                 testType, platform, udid));

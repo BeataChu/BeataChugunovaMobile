@@ -1,6 +1,7 @@
 package native_tests;
 
 import entities.Driver;
+import entities.TestProperties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,6 +15,15 @@ public class SimpleNativeTests extends Hooks {
 
     @Test(description = "Click the button 'Add contact'", groups = {"native"})
     public void simplestTest() throws Exception {
+        String udid = TestProperties.getProperty("udid");
+        String cloudURL = TestProperties.getProperty("installationURL");
+        System.out.println("cloudURL = " + cloudURL);
+        System.out.println("udid = " + udid);
+        String filePath = System.getProperty("user.dir") + TestProperties.getProperty("aut");
+        System.out.println("filePath = " + filePath);
+        CloudClient.remoteInstall(cloudURL, udid, filePath);
+
+
         String app_package_name = "com.example.android.contactmanager:id/";
         By add_btn = By.id(app_package_name + "addContactButton");
         Driver.getInstance().appiumDriver().findElement(add_btn).click();
@@ -21,15 +31,21 @@ public class SimpleNativeTests extends Hooks {
 
         //Add Contact Page is opened
         //Assert that Add Contact Page has all required elements
-        WebElement addBtn = Driver.getInstance().driverWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Add Contact\"]")));
+        By addContactXPath = By.xpath("//android.widget.TextView[@text=\"Add Contact\"]");
+        WebElement addBtn = Driver.getInstance().driverWait()
+                .until(ExpectedConditions.visibilityOfElementLocated(addContactXPath));
         assert (addBtn.isDisplayed());
-        WebElement targetAccountHeader = Driver.getInstance().appiumDriver().findElementByAccessibilityId("Target Account");
+        WebElement targetAccountHeader = Driver.getInstance().appiumDriver()
+                .findElementByAccessibilityId("Target Account");
         assert (targetAccountHeader.isDisplayed());
-        WebElement contactNameHeader = Driver.getInstance().appiumDriver().findElementByAccessibilityId("Contact Name");
+        WebElement contactNameHeader = Driver.getInstance().appiumDriver()
+                .findElementByAccessibilityId("Contact Name");
         assert (contactNameHeader.isDisplayed());
-        WebElement contactPhoneHeader = Driver.getInstance().appiumDriver().findElementByAccessibilityId("Contact Phone");
+        WebElement contactPhoneHeader = Driver.getInstance().appiumDriver()
+                .findElementByAccessibilityId("Contact Phone");
         assert (contactPhoneHeader.isDisplayed());
-        WebElement saveButton = Driver.getInstance().appiumDriver().findElementByAccessibilityId("Save");
+        WebElement saveButton = Driver.getInstance().appiumDriver()
+                .findElementByAccessibilityId("Save");
         assert (saveButton.isDisplayed());
 
         System.out.println("Simple native test is done");
