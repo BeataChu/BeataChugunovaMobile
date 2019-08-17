@@ -30,10 +30,11 @@ public class SimpleNativeTests extends Hooks {
 
 
         //Add Contact Page is opened
-        //Assert that Add Contact Page has all required elements
         By addContactXPath = By.xpath("//android.widget.TextView[@text=\"Add Contact\"]");
         WebElement addBtn = Driver.getInstance().driverWait()
                 .until(ExpectedConditions.visibilityOfElementLocated(addContactXPath));
+
+        //Assert that Add Contact Page has all required elements
         assert (addBtn.isDisplayed());
         WebElement targetAccountHeader = Driver.getInstance().appiumDriver()
                 .findElementByAccessibilityId("Target Account");

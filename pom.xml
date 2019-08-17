@@ -17,7 +17,9 @@
         <testng.version>6.14.3</testng.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <suite.xml>src/test/resources/webTests.xml</suite.xml>
-
+        <appium.version>6.1.0</appium.version>
+        <http_client.version>4.5.8</http_client.version>
+        <http_core.version>4.4.11</http_core.version>
     </properties>
 
     <profiles>
@@ -50,7 +52,7 @@
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>6.1.0</version>
+            <version>${appium.version}</version>
         </dependency>
 
         <dependency>
@@ -60,7 +62,33 @@
             <scope>test</scope>
         </dependency>
 
-        </dependencies>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${http_client.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>fluent-hc</artifactId>
+            <version>${http_client.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>${http_client.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>${http_core.version}</version>
+        </dependency>
+
+
+    </dependencies>
 
     <build>
         <plugins>
