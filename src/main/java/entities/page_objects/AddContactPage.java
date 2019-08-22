@@ -5,9 +5,9 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class AddContactPage extends BasePage{
+public class AddContactPage extends BasePage {
 
-    public AddContactPage(AppiumDriver driver){
+    public AddContactPage(AppiumDriver driver) {
         super(driver);
     }
 
@@ -26,7 +26,7 @@ public class AddContactPage extends BasePage{
     @AndroidFindBy(accessibility = "Save")
     private WebElement saveBtn;
 
-    public WebElement getAddContactTitle(){
+    public WebElement getAddContactTitle() {
         return addContactTitle;
     }
 
