@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class NativeTestsPO extends Hooks {
 
 
-    @Test(description = "Click the button 'Add contact'", groups = { "native" })
+    @Test(description = "Click the button 'Add contact'", groups = {"native"})
     public void nativeTestWithPageObjects() throws Exception {
         HomePage homePage = new HomePage(Driver.getInstance().appiumDriver());
 
