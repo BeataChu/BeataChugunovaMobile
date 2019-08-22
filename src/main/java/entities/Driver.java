@@ -32,15 +32,16 @@ public class Driver {
      * @throws Exception
      */
     private Driver() throws Exception {
-        AUT = TestProperties.getProperty("aut");
-        String t_sut = TestProperties.getProperty("sut");
+        AUT = TestProperties.getProperty(PropertiesNames.AUT.getName());
+        String t_sut = TestProperties.getProperty(PropertiesNames.SUT.getName());
         SUT = t_sut == null ? null : "https://" + t_sut;
-        TEST_PLATFORM = TestProperties.getProperty("platform");
-        DRIVER_URL = String.format(TestProperties.getProperty("driver_url"), System.getenv("CLOUD_TOKEN"));
-        AUTOMATION_NAME = TestProperties.getProperty("automation");
-        UDID = TestProperties.getProperty("udid");
-        APP_PACKAGE = TestProperties.getProperty("appPackage");
-        APP_ACTIVITY = TestProperties.getProperty("appActivity");
+        TEST_PLATFORM = TestProperties.getProperty(PropertiesNames.PLATFORM.getName());
+        DRIVER_URL = String.format(TestProperties.getProperty(PropertiesNames.DRIVER_URL.getName()),
+                System.getenv(PropertiesNames.CLOUD_TOKEN.getName()));
+        AUTOMATION_NAME = TestProperties.getProperty(PropertiesNames.AUTOMATION.getName());
+        UDID = TestProperties.getProperty(PropertiesNames.UDID.getName());
+        APP_PACKAGE = TestProperties.getProperty(PropertiesNames.APP_PACKAGE.getName());
+        APP_ACTIVITY = TestProperties.getProperty(PropertiesNames.APP_ACTIVITY.getName());
 
     }
 

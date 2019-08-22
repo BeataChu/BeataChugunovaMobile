@@ -9,7 +9,7 @@
 
         <classes>
 
-            <class name="native_tests.SimpleNativeTests"/>
+            <class name="native_tests.NativeTestsPO"/>
         </classes>
     </test>
 </suite>

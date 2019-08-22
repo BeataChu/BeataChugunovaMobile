@@ -31,7 +31,7 @@ public class TestProperties {
         testProperties.type = type;
         FileInputStream in = new FileInputStream((System.getProperty("user.dir") + type.getPath()));
         testProperties.currentProps.load(in);
-        testProperties.currentProps.setProperty("udid", udid);
+        testProperties.currentProps.setProperty(PropertiesNames.UDID.getName(), udid);
         in.close();
         instanceCounter++;
     }
@@ -43,7 +43,7 @@ public class TestProperties {
      * @return property;
      * @throws Exception
      */
-    public static String getProperty(String propKey) throws Exception {
+    public static String getProperty(String propKey) {
         if (testProperties == null) {
             throw new NullPointerException("Test properties have not been instantiated");
         }
