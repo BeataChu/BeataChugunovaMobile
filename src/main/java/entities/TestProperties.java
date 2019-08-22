@@ -43,7 +43,7 @@ public class TestProperties {
      * @return property;
      * @throws Exception
      */
-    public static String getProperty(String propKey) throws Exception {
+    public static String getProperty(String propKey) {
         if (testProperties == null) {
             throw new NullPointerException("Test properties have not been instantiated");
         }
